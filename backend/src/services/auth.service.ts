@@ -15,7 +15,9 @@ export const sendOTP = async (phone: string) => {
     Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000
   );
 
+  
   await Otp.deleteMany({ phone });
+
 
   await Otp.create({
     phone,
@@ -23,9 +25,7 @@ export const sendOTP = async (phone: string) => {
     expiresAt,
   });
 
-  
-
-
+ 
   console.log(`📱 OTP for ${phone}: ${otp}`);
 
   return {
@@ -33,7 +33,10 @@ export const sendOTP = async (phone: string) => {
   };
 };
 
-export const verifyOTP = async (phone: string, otp: string) => {
+export const verifyOTP = async (
+  phone: string,
+  otp: string
+) => {
   const otpRecord = await Otp.findOne({ phone });
 
   if (!otpRecord) {
@@ -42,6 +45,7 @@ export const verifyOTP = async (phone: string, otp: string) => {
 
   if (otpRecord.expiresAt < new Date()) {
     await Otp.deleteOne({ _id: otpRecord._id });
+
     throw new Error("OTP expired");
   }
 
@@ -61,6 +65,7 @@ export const verifyOTP = async (phone: string, otp: string) => {
     user.isVerified = true;
     await user.save();
   }
+
 
   await Otp.deleteOne({ _id: otpRecord._id });
 
