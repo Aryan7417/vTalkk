@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import {
   sendOTP,
   verifyOTP,
+  getCurrentUser,
 } from "../services/auth.service";
-
+import { AuthRequest } from "../middleware/auth.middlewere";
 
 
 export const sendOtpController = async (
@@ -35,6 +36,42 @@ export const sendOtpController = async (
     });
   }
 };
+
+
+
+
+export const getCurrentUserController = async (
+  req: AuthRequest,
+  res: Response
+) => {
+  try {
+    if (!req.userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    const user = await getCurrentUser(req.userId);
+
+    return res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    console.error("Get Current User Error:", error);
+
+    return res.status(404).json({
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : "User not found",
+    });
+  }
+};
+
+
 
 export const verifyOtpController = async (
   req: Request,

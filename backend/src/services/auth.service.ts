@@ -16,6 +16,20 @@ const generateOTP = (): string => {
 
 // Send OTP
 
+export const getCurrentUser = async (userId: string) => {
+  const user = await User.findById(userId).select(
+    "-__v"
+  );
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user;
+};
+
+
+
 
 
 export const sendOTP = async (phone: string) => {
@@ -24,6 +38,7 @@ export const sendOTP = async (phone: string) => {
   const expiresAt = new Date(
     Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000
   );
+
 
 
   // Delete old OTP
@@ -121,6 +136,8 @@ export const verifyOTP = async (
   const token = generateToken(
     user._id.toString()
   );
+
+  
 
   return {
     message: "OTP verified successfully",
