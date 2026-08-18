@@ -29,8 +29,6 @@ export const updateUserProfile = async (
 
 // Get all users except current user
 
-
-
 export const getAllUsers = async (currentUserId: string) => {
   const users = await User.find({
     _id: { $ne: currentUserId },

@@ -1,9 +1,19 @@
 import { Response } from "express";
 import { AuthRequest } from "../middleware/auth.middlewere";
-import { updateUserProfile } from "../services/user.service";
+
+import {
+  updateUserProfile,
+  getAllUsers,
+} from "../services/user.service";
+
+
+// Update Profile
+
 
 export const updateProfileController = async (
+
   req: AuthRequest,
+
   res: Response
 ) => {
   try {
@@ -45,4 +55,44 @@ export const updateProfileController = async (
           : "Failed to update profile",
     });
   }
+};
+
+
+// Get All Users
+
+
+export const getAllUsersController = async (
+  req: AuthRequest,
+  res: Response
+
+) => {
+
+  try {
+    if (!req.userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    const users = await getAllUsers(req.userId);
+
+    return res.status(200).json({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    console.error("Get Users Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : "Failed to get users",
+
+        });
+
+  }
+
 };
