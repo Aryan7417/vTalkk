@@ -2,11 +2,14 @@ import http from 'http'
 import app from './app'
 import connectDB from "./config/db";
 import "dotenv/config";
+import { initSocket } from "./socket";
 
 
 const port = Number(process.env.PORT) || 3000;
 
 const server = http.createServer(app);
+
+initSocket(server);
 
 const startServer = async () => {
   await connectDB();
