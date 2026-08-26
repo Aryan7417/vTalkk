@@ -14,4 +14,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  bacekndghoppunt: {
+    backgroundColor: 'black'
+  }
 });
