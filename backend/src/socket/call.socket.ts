@@ -1,21 +1,31 @@
-import { Server } from "socket.io";
+import { Server, Socket } from "socket.io";
 
 export const registerCallSocket = (
   io: Server,
   onlineUsers: Map<string, string>
 ) => {
-  io.on("connection", (socket) => {
+  io.on("connection", (socket: Socket) => {
 
-    // ---------------- Call request ----------------
+    // ================= CALL USER =================
 
     socket.on(
       "call-user",
       ({ targetUserId, caller }) => {
 
+        if (!targetUserId) {
+          console.log("❌ Target user ID missing");
+          return;
+        }
+
         const targetSocketId =
           onlineUsers.get(targetUserId);
 
+        // User offline
         if (!targetSocketId) {
+          console.log(
+            `🔴 User offline: ${targetUserId}`
+          );
+
           socket.emit("user-offline", {
             userId: targetUserId,
           });
@@ -27,6 +37,7 @@ export const registerCallSocket = (
           `📞 Call request from ${socket.id} to ${targetUserId}`
         );
 
+        // Send incoming call
         io.to(targetSocketId).emit(
           "incoming-call",
           {
@@ -38,11 +49,15 @@ export const registerCallSocket = (
     );
 
 
-    // ---------------- Accept call ----------------
+    // ================= ACCEPT CALL =================
 
     socket.on(
       "accept-call",
       ({ callerSocketId }) => {
+
+        if (!callerSocketId) {
+          return;
+        }
 
         console.log(
           `✅ Call accepted by ${socket.id}`
@@ -58,11 +73,15 @@ export const registerCallSocket = (
     );
 
 
-    // ---------------- Reject call ----------------
+    // ================= REJECT CALL =================
 
     socket.on(
       "reject-call",
       ({ callerSocketId }) => {
+
+        if (!callerSocketId) {
+          return;
+        }
 
         console.log(
           `❌ Call rejected by ${socket.id}`
@@ -75,11 +94,15 @@ export const registerCallSocket = (
     );
 
 
-    // ---------------- End call ----------------
+    // ================= END CALL =================
 
     socket.on(
       "end-call",
       ({ targetUserId }) => {
+
+        if (!targetUserId) {
+          return;
+        }
 
         const targetSocketId =
           onlineUsers.get(targetUserId);

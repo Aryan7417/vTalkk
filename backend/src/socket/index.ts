@@ -1,3 +1,4 @@
+
 import { Server as HttpServer } from "http";
 import { Server as SocketServer } from "socket.io";
 
@@ -11,15 +12,11 @@ import {
 let io: SocketServer;
 
 // User ID -> Socket ID
-
-
 const onlineUsers = new Map<string, string>();
 
 export const initSocket = (server: HttpServer) => {
 
-
   // Create Socket.io server
-
   io = new SocketServer(server, {
     cors: {
       origin: "*",
@@ -27,37 +24,57 @@ export const initSocket = (server: HttpServer) => {
     },
   });
 
-  //Authenticate every socket connection
-
-
+  // Authenticate every socket connection
   io.use(socketAuthMiddleware);
 
   // Handle socket connection
-
-
   io.on("connection", (socket: AuthenticatedSocket) => {
+
     console.log(`🔌 User connected: ${socket.id}`);
 
     // User ID comes from JWT
     const userId = socket.userId;
 
     if (userId) {
+
       // Save User ID -> Socket ID
       onlineUsers.set(userId, socket.id);
+
+      // Join user's personal room
+      socket.join(`user:${userId}`);
 
       console.log(
         `🟢 User online: ${userId} -> ${socket.id}`
       );
+
+      console.log(
+        `🏠 Joined room: user:${userId}`
+      );
+
+      // Tell other connected users
+      socket.broadcast.emit("user-online", {
+        userId,
+      });
     }
 
-    //  User disconnect
+    // User disconnect
     socket.on("disconnect", () => {
-      if (userId) {
-        const currentSocketId = onlineUsers.get(userId);
 
-        // Only delete if this is the user's current socket
+      if (userId) {
+
+        const currentSocketId =
+          onlineUsers.get(userId);
+
+        // Only remove if this is the user's
+        // currently active socket
         if (currentSocketId === socket.id) {
+
           onlineUsers.delete(userId);
+
+          // Tell other users
+          socket.broadcast.emit("user-offline", {
+            userId,
+          });
         }
 
         console.log(
@@ -71,10 +88,12 @@ export const initSocket = (server: HttpServer) => {
     });
   });
 
-  // 📞 Register call events
+  // Register call events
   registerCallSocket(io, onlineUsers);
 
-  console.log("⚡ Socket.io server initialized");
+  console.log(
+    "⚡ Socket.io server initialized"
+  );
 
   return io;
 };
@@ -82,6 +101,7 @@ export const initSocket = (server: HttpServer) => {
 
 // Get Socket.io instance
 export const getIO = () => {
+
   if (!io) {
     throw new Error(
       "Socket.io is not initialized"
