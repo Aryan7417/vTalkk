@@ -12,9 +12,15 @@ export default function RootLayout() {
           contentStyle: {
             backgroundColor: "#0A0A0A",
           },
-          animation: "fade",
         }}
       />
     </>
   );
 }
+
+
+// import { Stack } from "expo-router";
+
+// export default function RootLayout() {
+//   return <Stack />;
+// }
