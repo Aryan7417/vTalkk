@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>VTalk - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#303032",
+                        "primary": "#ffb4aa",
+                        "tertiary-fixed-dim": "#c8c6c8",
+                        "secondary-container": "#474649",
+                        "outline-variant": "#5d3f3b",
+                        "on-tertiary-fixed-variant": "#474649",
+                        "on-tertiary-container": "#29292b",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#ff5545",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "on-tertiary": "#303032",
+                        "on-error": "#690005",
+                        "on-primary": "#690003",
+                        "on-primary-fixed": "#410001",
+                        "on-primary-fixed-variant": "#930005",
+                        "on-background": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "on-secondary-container": "#b6b4b7",
+                        "primary-fixed": "#ffdad5",
+                        "on-secondary-fixed": "#1b1b1d",
+                        "tertiary": "#c8c6c8",
+                        "on-primary-container": "#5c0002",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary": "#c8c6c8",
+                        "tertiary-fixed": "#e4e2e4",
+                        "on-tertiary-fixed": "#1b1b1d",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#c8c6c8",
+                        "surface-variant": "#353534",
+                        "surface": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed": "#e4e2e4",
+                        "error-container": "#93000a",
+                        "outline": "#ad8883",
+                        "on-surface-variant": "#e7bdb7",
+                        "tertiary-container": "#919092",
+                        "surface-tint": "#ffb4aa",
+                        "on-secondary-fixed-variant": "#474649",
+                        "surface-bright": "#3a3939",
+                        "inverse-primary": "#c0000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["10px", { "lineHeight": "12px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle glow for active/primary elements */
+        .glow-primary {
+            box-shadow: 0 0 15px rgba(255, 59, 48, 0.15);
+        }
+        
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased font-body-md min-h-screen flex flex-col pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-background flex justify-between items-center h-16 px-margin-mobile">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary text-2xl" data-weight="fill">videocam</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">VTalk</h1>
+</div>
+<button class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant hover:opacity-80 transition-opacity duration-200">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A detailed, professional profile photo of a user in a minimalist dark setting with cinematic lighting, focusing on sharp features and modern aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxlEkH5QKp4_5f8x1bVjh3hsg5WfVQM_nFqNEm5pxE67Tsyc_eqJGF6FKttmOb2NUT9wa3dKZcz_nCNoWHJCTPmfonGBfAxaqS-TDF49DhowqWKCMqON0WaJdpMu5Smt5HH9wBUZCT2n6taQgrw36FtytcG2SslQ9LkoFz2v05gB4ObcAQRFjzak3z_NnHkqzdgfUBS3WelvDesjrwejYtkyE8EpmDNyUJkNN-ba1otoQZr_ofHbpb"/>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] pb-[100px] px-margin-mobile flex flex-col gap-stack-lg max-w-2xl mx-auto w-full">
+<!-- Search Bar -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">search</span>
+</div>
+<input class="w-full bg-surface-container-low border border-outline-variant text-on-surface rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors duration-200 font-body-md text-body-md placeholder-on-surface-variant" placeholder="Search contacts..." type="text"/>
+</div>
+<!-- Online Users Section -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Online Now</h2>
+<div class="flex flex-col gap-stack-sm">
+<!-- User Item 1 -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl border border-outline-variant hover:bg-surface-container transition-colors duration-200">
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<img alt="Sarah J." class="w-12 h-12 rounded-full object-cover border border-surface-container-highest" data-alt="A portrait of a young professional woman in a sleek, dark-themed room with a subtle red glow, wearing minimal geometric jewelry, cinematic light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe0VNBhoeeNTarLyso92ByXNxQ8hy1xFe62dmV0gFNRq2HLr87N0B2xb5rUtE4CxN1btOyWln6obMz8BXubYd_wT1XkbtvI6U4oMogUeX4RK4bwt8ELtRMNo9fdWeb08K_DCSyUT4hk7moQDWuesepHTnKKKQc3R92M0RyqIV91s-oLbbbsK8nK8M55BjdT321iPu4j8JYVCWHgDmniHhtXyG9oZf9ZQ6UOV48n8j2L0gbbk1O-QHb"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-container-low"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">Sarah Jenkins</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl">videocam</span>
+</button>
+</div>
+<!-- User Item 2 -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl border border-outline-variant hover:bg-surface-container transition-colors duration-200">
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<img alt="Michael C." class="w-12 h-12 rounded-full object-cover border border-surface-container-highest" data-alt="A portrait of an energetic man with glasses in a minimalist dark office environment, lit by soft white light and deep black shadows, high-key modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeXrjZIrQFyNSPdWAlwpQYhKQtqwjO67R7EM-Y6KTB04kmszISs1_ufVrgnao_xdhu3iYus8UuesE7aBFmGx3Y16XFCzvFJzbtTtLaI0G2C3O-43ZLu6L__Zy_ePmsWCPoeBX-y1Jag8HPPqWG91f7s6Jxilotnux9fNTBw_5nvPZT4azS9mhPhW8GrQatK6iqosLu51sVC5WovdyxjDn6_rd7ju4a5jJdaYr70iUf_cq3rXFxW9Xl"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-container-low"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">Michael Chen</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">In a meeting</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl">videocam</span>
+</button>
+</div>
+<!-- User Item 3 -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl border border-outline-variant hover:bg-surface-container transition-colors duration-200">
+<div class="flex items-center gap-stack-md">
+<div class="relative">
+<img alt="Elena R." class="w-12 h-12 rounded-full object-cover border border-surface-container-highest" data-alt="A sophisticated portrait of a creative professional in a dark studio setting, accented by vibrant red tones, minimalist aesthetic with crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjBwQY3Qp99eMhoM2mEW_LJiHxfRsRgUPeI2owh7y4jLOzRFO2bBppdudLvX_W48e7aiXJIRCK66v3qE0xybkdX_YQ-fcBxHoCFVHt2Vk7AXmNbNviJvZC1T8qkW4FRyT1oevSjBe1SrtQVD3GIN04urZF-YiWHg78PJQNln2eEjBnyqGIUPYZJhHmJb0d8oRRj_b1uWuFbnDPXy928Ao6tCIjBvzSf0oksUIEQzyy8NRq6djsGP2L"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-surface-container-low"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">Elena Rodriguez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl">videocam</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Recent Calls Section -->
+<section class="flex flex-col gap-stack-md mt-4">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Recent</h2>
+<div class="flex overflow-x-auto gap-stack-md pb-4 snap-x">
+<!-- Recent Card 1 -->
+<div class="min-w-[140px] bg-surface-container-low p-4 rounded-xl border border-outline-variant flex flex-col items-center gap-stack-sm snap-start">
+<img alt="Recent Call" class="w-14 h-14 rounded-full object-cover opacity-80" data-alt="A subtle, moody abstract geometric shape in deep blacks and pristine whites with a hint of red, representing a minimalist avatar placeholder in a modern dark UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD34IKCGGPZMnbog0n13g4i4-Ub3puEquUg3TieKTyZuslgQqbaMjUunwLvGMBlCOJ4wU2AFdQ3h6eAhccCUD5ovu5o51Eika0GIauFusNMFdeK-KYpp2ZrMcZEBCIHD-qgBNEx1KKhWBNNPCVMezNXIkEG9LOWWxwfTiY_nD10cxB5oST0NtIYvuEYIX_ETJwko_3mavMLZYfcELR1x6BtBgueAc0xFPZywgmBm7LAnUYlmJefaTCf"/>
+<div class="text-center">
+<span class="block font-body-md text-body-md text-on-surface">Design Team</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[12px]">call_received</span> Today, 2pm
+                        </span>
+</div>
+</div>
+<!-- Recent Card 2 -->
+<div class="min-w-[140px] bg-surface-container-low p-4 rounded-xl border border-outline-variant flex flex-col items-center gap-stack-sm snap-start">
+<img alt="Recent Call" class="w-14 h-14 rounded-full object-cover opacity-80" data-alt="A subtle, moody abstract geometric shape in deep blacks and pristine whites with a hint of red, representing a minimalist avatar placeholder in a modern dark UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUuMePi18RB8-lS8Aj4aCeBKorUW0uBen0HjmB8FdAT1pQJ636rBx6fQV84q194kWBtMQIJ9CphLirxnCu_smfhEcrmyt2uX3Cl_IMkBxqGIV2yr6SLf4PnpkUZQB-pazHxNxPaEVYrON9N2cTUrQhTGeTMsLj3Icqc2JmKjW1Q90hkFHt4xhenoncNflE5nMifGRaxlhGjYp9oY6PdOet_LHVPwdAnb2un7LJjTibf_LcfzzDPwO9"/>
+<div class="text-center">
+<span class="block font-body-md text-body-md text-on-surface">Alex W.</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[12px] text-error">call_missed</span> Yesterday
+                        </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-margin-mobile pb-safe bg-surface-container dark:bg-surface-container border-t border-outline-variant rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">call</span>
+<span class="font-label-md text-label-md mt-1">Calls</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md mt-1">Settings</span>
+</button>
+</nav>
+<!-- Desktop Navigation Cluster (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed top-0 right-0 h-16 items-center pr-margin-desktop z-50 gap-stack-md bg-background">
+<button class="text-on-surface font-label-md text-label-md px-3 py-2 rounded-lg bg-surface-container-highest">Home</button>
+<button class="text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">Calls</button>
+<button class="text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">Settings</button>
+</nav>
+</body></html>

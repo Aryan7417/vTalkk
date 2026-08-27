@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VTalk Incoming Call</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-secondary": "#303032",
+                            "primary": "#ffb4aa",
+                            "tertiary-fixed-dim": "#c8c6c8",
+                            "secondary-container": "#474649",
+                            "outline-variant": "#5d3f3b",
+                            "on-tertiary-fixed-variant": "#474649",
+                            "on-tertiary-container": "#29292b",
+                            "surface-container-highest": "#353534",
+                            "primary-container": "#ff5545",
+                            "primary-fixed-dim": "#ffb4aa",
+                            "on-tertiary": "#303032",
+                            "on-error": "#690005",
+                            "on-primary": "#690003",
+                            "on-primary-fixed": "#410001",
+                            "on-primary-fixed-variant": "#930005",
+                            "on-background": "#e5e2e1",
+                            "inverse-surface": "#e5e2e1",
+                            "surface-dim": "#131313",
+                            "on-surface": "#e5e2e1",
+                            "surface-container": "#201f1f",
+                            "on-secondary-container": "#b6b4b7",
+                            "primary-fixed": "#ffdad5",
+                            "on-secondary-fixed": "#1b1b1d",
+                            "tertiary": "#c8c6c8",
+                            "on-primary-container": "#5c0002",
+                            "error": "#ffb4ab",
+                            "background": "#131313",
+                            "surface-container-low": "#1c1b1b",
+                            "secondary": "#c8c6c8",
+                            "tertiary-fixed": "#e4e2e4",
+                            "on-tertiary-fixed": "#1b1b1d",
+                            "on-error-container": "#ffdad6",
+                            "surface-container-high": "#2a2a2a",
+                            "inverse-on-surface": "#313030",
+                            "secondary-fixed-dim": "#c8c6c8",
+                            "surface-variant": "#353534",
+                            "surface": "#131313",
+                            "surface-container-lowest": "#0e0e0e",
+                            "secondary-fixed": "#e4e2e4",
+                            "error-container": "#93000a",
+                            "outline": "#ad8883",
+                            "on-surface-variant": "#e7bdb7",
+                            "tertiary-container": "#919092",
+                            "surface-tint": "#ffb4aa",
+                            "on-secondary-fixed-variant": "#474649",
+                            "surface-bright": "#3a3939",
+                            "inverse-primary": "#c0000a"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "unit": "4px",
+                            "margin-desktop": "24px",
+                            "stack-md": "16px",
+                            "stack-lg": "24px",
+                            "margin-mobile": "16px",
+                            "stack-sm": "8px",
+                            "gutter": "12px"
+                    },
+                    "fontFamily": {
+                            "headline-lg-mobile": ["Inter"],
+                            "label-md": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "500"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen w-screen overflow-hidden flex flex-col justify-between relative">
+<!-- Background Layer (Blurred Avatar Placeholder) -->
+<div class="absolute inset-0 z-0 bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center blur-2xl opacity-40 scale-110 transform" data-alt="A portrait of a professional looking person in a modern office, softly blurred. High contrast, cinematic lighting, emphasizing dark mode aesthetic with subtle red highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBr8-MfJVP3Y1nde95XYJq1nqsiOz4vx0yw0ZeWKwlpquHlDQ6CpGjs0koCgEfkTDYdUYkQBYGeU2DVb0ul0TI5wLfGuDKak8Qcr5oxOvgqU7KnzeFfvtTBHI9y9YUZHZ2rRJtAk04X1WGv8WAWHr7okQnSNl_IWqYLzZcL1r_41e1L-Hk-d0wfSqZ5vhMq3ad9UhT30abxUbm4oLSTQ7wJ1-BSQn9dJ25E36vPnR3V8H0turHUVPDX')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-90"></div>
+</div>
+<!-- Top Navigation (VTalk Brand) -->
+<header class="fixed top-0 w-full z-50 bg-background/50 backdrop-blur-sm border-b border-surface-container-highest/50">
+<div class="flex justify-between items-center h-16 px-margin-mobile w-full max-w-screen-md mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-headline-md text-headline-md">videocam</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">VTalk</span>
+</div>
+<!-- Minimalistic trailing element for balance -->
+<span class="material-symbols-outlined text-on-surface-variant font-variation-settings-'FILL'-1">shield_lock</span>
+</div>
+</header>
+<!-- Main Content Area (Caller Info) -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center px-margin-mobile pt-24 pb-32">
+<div class="flex flex-col items-center space-y-stack-lg text-center">
+<!-- Avatar with Pulse -->
+<div class="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40">
+<div class="absolute inset-0 rounded-full border-2 border-primary pulse-ring opacity-50"></div>
+<div class="absolute inset-0 rounded-full border-2 border-primary pulse-ring opacity-25" style="animation-delay: 0.5s;"></div>
+<img class="w-full h-full object-cover rounded-full z-10 shadow-[0_0_20px_rgba(255,59,48,0.2)]" data-alt="A close-up portrait of a professional, looking directly at the camera, sharp focus against a dark background, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6vW5ro3BkoEH0y51pumG3Paqdcko9dp73rBHBRdOVdeFfBskye-MxvkH0XvGeodziu1K3h1eGrw-3UjejnueZf5I0isyT2HPZWxO_D1mYh3IrGnI9QePhKJbjLzJHe0KTmy-K8s-Sa7Mvv_ic4j3dXH-MeKxTBScx3G7rX-2bQ3u5PvJ4SjQeU6IsralXi7uJ1MfUI2Bnz3wjLtDGN5uFdIa2_khg3p3Il4dSzVE2Z8AYKBLqC0mv"/>
+</div>
+<!-- Caller Info -->
+<div class="space-y-stack-sm">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Alex Mercer</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant animate-pulse">Incoming video call...</p>
+</div>
+</div>
+</main>
+<!-- Bottom Actions Area -->
+<footer class="relative z-20 w-full px-margin-mobile pb-stack-lg md:pb-10 pt-stack-lg bg-gradient-to-t from-background via-background to-transparent">
+<div class="flex flex-row justify-center items-center gap-8 max-w-sm mx-auto">
+<!-- Decline Button -->
+<button class="flex flex-col items-center gap-stack-sm group">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface transition-transform duration-200 hover:scale-105 active:scale-95 group-hover:bg-error-container group-hover:text-on-error-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call_end</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">Decline</span>
+</button>
+<!-- Accept Button -->
+<button class="flex flex-col items-center gap-stack-sm group">
+<div class="w-20 h-20 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-[0_0_15px_rgba(255,85,69,0.3)] transition-transform duration-200 hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">videocam</span>
+</div>
+<span class="font-label-md text-label-md text-primary transition-colors">Accept</span>
+</button>
+</div>
+</footer>
+</body></html>

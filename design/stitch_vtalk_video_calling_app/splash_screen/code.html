@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VTalk - Splash Screen</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#303032",
+                    "primary": "#ffb4aa",
+                    "tertiary-fixed-dim": "#c8c6c8",
+                    "secondary-container": "#474649",
+                    "outline-variant": "#5d3f3b",
+                    "on-tertiary-fixed-variant": "#474649",
+                    "on-tertiary-container": "#29292b",
+                    "surface-container-highest": "#353534",
+                    "primary-container": "#ff5545",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "on-tertiary": "#303032",
+                    "on-error": "#690005",
+                    "on-primary": "#690003",
+                    "on-primary-fixed": "#410001",
+                    "on-primary-fixed-variant": "#930005",
+                    "on-background": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-dim": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "on-secondary-container": "#b6b4b7",
+                    "primary-fixed": "#ffdad5",
+                    "on-secondary-fixed": "#1b1b1d",
+                    "tertiary": "#c8c6c8",
+                    "on-primary-container": "#5c0002",
+                    "error": "#ffb4ab",
+                    "background": "#131313",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary": "#c8c6c8",
+                    "tertiary-fixed": "#e4e2e4",
+                    "on-tertiary-fixed": "#1b1b1d",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-high": "#2a2a2a",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#c8c6c8",
+                    "surface-variant": "#353534",
+                    "surface": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed": "#e4e2e4",
+                    "error-container": "#93000a",
+                    "outline": "#ad8883",
+                    "on-surface-variant": "#e7bdb7",
+                    "tertiary-container": "#919092",
+                    "surface-tint": "#ffb4aa",
+                    "on-secondary-fixed-variant": "#474649",
+                    "surface-bright": "#3a3939",
+                    "inverse-primary": "#c0000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "margin-desktop": "24px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "10px",
+                            {
+                                    "lineHeight": "12px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+        },
+      }
+    }
+    </script>
+<style>
+        /* Custom styles for animations or specific effects */
+        .pulse-glow {
+            animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden w-full h-screen flex items-center justify-center relative">
+<!-- Subtle Red Glow Effect (Premium Pulse) -->
+<div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+<div class="w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-[#FF3B30] rounded-full blur-[100px] md:blur-[120px] pulse-glow"></div>
+</div>
+<!-- Centered Logo -->
+<div class="z-10 flex flex-col items-center justify-center transform transition-transform duration-1000 ease-out translate-y-0 opacity-100" id="splash-content">
+<div class="w-32 h-32 md:w-48 md:h-48 relative mb-stack-lg">
+<img alt="VTalk Logo" class="w-full h-full object-contain drop-shadow-2xl z-10 relative" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQLmzqRfaRBh8FOOitWnT7nKvLBsMBCNd51uq3ggL8Va5Eh3iWy3aPyu0o8lc1gQsXqlfPGuJEOILhDO3B60f0rIMk37Yb9JfHrQ1cHpTMnF9P5REWTpkPORcsgdEU-5IMJ6MwYSDa2HL6tpyseiB3-szpo9g6QZLHoA0_A_AotWOCIXj2VCs1sc91B2Ztch4t6dcfvWnsI59tzhym7fhlD4qMjrnRJci-P3R-NJHFHJqObxY4bDqQ"/>
+</div>
+<!-- Animated loading indicator (optional, keeps it minimal) -->
+<div class="w-8 h-1 bg-surface-container rounded-full mt-stack-lg overflow-hidden">
+<div class="h-full bg-primary w-1/3 rounded-full animate-[slide_1.5s_ease-in-out_infinite]"></div>
+</div>
+</div>
+<style>
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(200%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+<script>
+        // Simple entrance animation logic if needed, though mostly handled by CSS
+        document.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('splash-content');
+            // Ensure initial state is set
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            
+            // Trigger animation shortly after load
+            setTimeout(() => {
+                content.style.transition = 'opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Example redirect logic for a real app (commented out)
+            // setTimeout(() => {
+            //     window.location.href = '/home'; // Navigate to main app
+            // }, 3000); // 3 seconds splash duration
+        });
+    </script>
+</body></html>

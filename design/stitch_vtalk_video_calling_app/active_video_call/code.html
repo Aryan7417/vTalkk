@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>VTalk - Active Call</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#303032",
+                      "primary": "#ffb4aa",
+                      "tertiary-fixed-dim": "#c8c6c8",
+                      "secondary-container": "#474649",
+                      "outline-variant": "#5d3f3b",
+                      "on-tertiary-fixed-variant": "#474649",
+                      "on-tertiary-container": "#29292b",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#ff5545",
+                      "primary-fixed-dim": "#ffb4aa",
+                      "on-tertiary": "#303032",
+                      "on-error": "#690005",
+                      "on-primary": "#690003",
+                      "on-primary-fixed": "#410001",
+                      "on-primary-fixed-variant": "#930005",
+                      "on-background": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-dim": "#131313",
+                      "on-surface": "#e5e2e1",
+                      "surface-container": "#201f1f",
+                      "on-secondary-container": "#b6b4b7",
+                      "primary-fixed": "#ffdad5",
+                      "on-secondary-fixed": "#1b1b1d",
+                      "tertiary": "#c8c6c8",
+                      "on-primary-container": "#5c0002",
+                      "error": "#ffb4ab",
+                      "background": "#131313",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary": "#c8c6c8",
+                      "tertiary-fixed": "#e4e2e4",
+                      "on-tertiary-fixed": "#1b1b1d",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-high": "#2a2a2a",
+                      "inverse-on-surface": "#313030",
+                      "secondary-fixed-dim": "#c8c6c8",
+                      "surface-variant": "#353534",
+                      "surface": "#131313",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-fixed": "#e4e2e4",
+                      "error-container": "#93000a",
+                      "outline": "#ad8883",
+                      "on-surface-variant": "#e7bdb7",
+                      "tertiary-container": "#919092",
+                      "surface-tint": "#ffb4aa",
+                      "on-secondary-fixed-variant": "#474649",
+                      "surface-bright": "#3a3939",
+                      "inverse-primary": "#c0000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-desktop": "24px",
+                      "stack-md": "16px",
+                      "stack-lg": "24px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Disable pull-to-refresh and bouncy scrolling on mobile for app-like feel */
+        html, body {
+            overscroll-behavior-y: none;
+            overflow: hidden;
+        }
+        
+        /* Subtle glow for recording/live indicator */
+        .live-glow {
+            box-shadow: 0 0 12px 2px rgba(255, 59, 48, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 12px 2px rgba(255, 59, 48, 0.4); }
+            50% { box-shadow: 0 0 16px 4px rgba(255, 59, 48, 0.6); }
+            100% { box-shadow: 0 0 12px 2px rgba(255, 59, 48, 0.4); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen relative selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Anchor (Suppressed nav structure, keeping minimal header for call info) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center h-16 px-margin-mobile bg-gradient-to-b from-black/60 to-transparent">
+<div class="flex items-center gap-stack-sm">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface/40 backdrop-blur-sm text-on-surface hover:bg-surface/60 transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Alex Johnson</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-[#FF3B30] live-glow"></div> 12:45
+                </span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface/40 backdrop-blur-sm text-on-surface hover:bg-surface/60 transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Main Video Canvas (Remote User) -->
+<div class="absolute inset-0 w-full h-full z-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-quality video feed of a professional woman in her 30s sitting in a modern, softly lit living room. The lighting is warm and flattering, with a shallow depth of field blurring the background slightly. Deep shadows and high contrast create a premium, intimate mood consistent with a high-end video calling application dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz04TGGEToDVKvXrM1qhwRzYYUMEuKDF6yWkRbEv7pM-PuAhXdycnZq3XMwqrq0Ob_g6hmm4OcgAMyusC-8GqJ4u1XNKvI6qqSjGRKrEVJEBRFpDYI5oHh4z6RwiLcT79wUoze0r46p7ibYYzPOEXtsm5bXT_E5xiUa9qQXy2qTjntC4ToEhuy-SXW9nnYuAuKxfoiSsDsuK4oMu9whNCoYM2Rt9Wk6w7rQDUe5DQu1KrV57tjReKj"/>
+<!-- Subtle Vignette to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+</div>
+<!-- Local User PiP (Picture-in-Picture) -->
+<div class="absolute top-20 right-margin-mobile w-28 h-40 rounded-xl overflow-hidden z-10 border border-[#2C2C2E] shadow-[0_8px_30px_rgb(0,0,0,0.5)] cursor-move transition-transform active:scale-95" id="pip-window">
+<img class="w-full h-full object-cover" data-alt="A clear, well-lit selfie-style video feed of a young man smiling slightly. The background is a minimalist home office with dark grey walls and a subtle glowing desk lamp. The image is crisp and optimized for a small picture-in-picture display within a sophisticated dark-themed video chat interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC13MvPcDF1cpEFNKZyD67ckORYlwcJld4yG9tuHNlJ_EMOaiE4Z13ir46ibL0s6ODJ6tt6Du56OqFqOoTW7oigvzIxls2sqqCM5jFvHasoYn9RABFT5KM-N4zKZdbGQJyJGaI9Rj1dBeGXLp-OANCoBLn3VmQFxCJeX_d71jk6QmDlyKYjtuAEmHmRcO5zjHS_lQuU9kfoedKfsNMIdm2_M3Sk-49vOVRv4tHNJBOzEBj6uQC_mvbk"/>
+<button class="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-surface-container/80 backdrop-blur-md flex items-center justify-center text-on-surface border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]" data-icon="cameraswitch">cameraswitch</span>
+</button>
+</div>
+<!-- Bottom Overlay Controls -->
+<div class="fixed bottom-0 left-0 w-full z-20 pb-safe px-margin-mobile pt-10 pb-8 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col gap-stack-lg items-center">
+<!-- Control Row -->
+<div class="flex justify-center items-center gap-gutter w-full max-w-sm">
+<!-- Mute Toggle -->
+<button class="flex flex-col items-center gap-2 group" id="btn-mute">
+<div class="w-14 h-14 rounded-full bg-[#1C1C1E] flex items-center justify-center text-on-surface transition-all active:scale-90 border border-transparent group-hover:border-[#2C2C2E]">
+<span class="material-symbols-outlined text-[24px]" data-icon="mic">mic</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mute</span>
+</button>
+<!-- Camera Toggle -->
+<button class="flex flex-col items-center gap-2 group" id="btn-camera">
+<div class="w-14 h-14 rounded-full bg-[#1C1C1E] flex items-center justify-center text-on-surface transition-all active:scale-90 border border-transparent group-hover:border-[#2C2C2E]">
+<span class="material-symbols-outlined text-[24px]" data-icon="videocam">videocam</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Video</span>
+</button>
+<!-- End Call (Primary) -->
+<button class="flex flex-col items-center gap-2 group px-2">
+<div class="w-16 h-16 rounded-full bg-[#FF3B30] flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,59,48,0.3)] transition-all active:scale-90 hover:bg-[#FF453A]">
+<span class="material-symbols-outlined text-[32px] icon-fill" data-icon="call_end">call_end</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#FF3B30]">End</span>
+</button>
+<!-- Speaker Toggle -->
+<button class="flex flex-col items-center gap-2 group" id="btn-speaker">
+<div class="w-14 h-14 rounded-full bg-[#1C1C1E] flex items-center justify-center text-on-surface transition-all active:scale-90 border border-transparent group-hover:border-[#2C2C2E]">
+<span class="material-symbols-outlined text-[24px]" data-icon="volume_up">volume_up</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Speaker</span>
+</button>
+<!-- Voice Changer / Effects -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-[#1C1C1E] flex items-center justify-center text-primary transition-all active:scale-90 border border-transparent group-hover:border-[#2C2C2E]">
+<span class="material-symbols-outlined text-[24px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Effects</span>
+</button>
+</div>
+</div>
+<!-- Minimal JavaScript for interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Toggle Logic for Mute
+            const btnMute = document.getElementById('btn-mute');
+            let isMuted = false;
+            btnMute.addEventListener('click', () => {
+                isMuted = !isMuted;
+                const icon = btnMute.querySelector('span');
+                const bg = btnMute.querySelector('div');
+                
+                if (isMuted) {
+                    icon.textContent = 'mic_off';
+                    icon.classList.add('text-[#FF3B30]');
+                    bg.classList.add('bg-surface-container-high');
+                } else {
+                    icon.textContent = 'mic';
+                    icon.classList.remove('text-[#FF3B30]');
+                    bg.classList.remove('bg-surface-container-high');
+                }
+            });
+
+            // Toggle Logic for Camera
+            const btnCamera = document.getElementById('btn-camera');
+            let isCameraOff = false;
+            btnCamera.addEventListener('click', () => {
+                isCameraOff = !isCameraOff;
+                const icon = btnCamera.querySelector('span');
+                const bg = btnCamera.querySelector('div');
+                const pip = document.getElementById('pip-window');
+                
+                if (isCameraOff) {
+                    icon.textContent = 'videocam_off';
+                    icon.classList.add('text-on-surface-variant');
+                    pip.style.opacity = '0.5';
+                    pip.style.filter = 'grayscale(100%)';
+                } else {
+                    icon.textContent = 'videocam';
+                    icon.classList.remove('text-on-surface-variant');
+                    pip.style.opacity = '1';
+                    pip.style.filter = 'none';
+                }
+            });
+
+            // Simple drag logic for PiP (desktop simulation)
+            const pip = document.getElementById('pip-window');
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            pip.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = pip.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                pip.style.transition = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                pip.style.left = `${initialX + dx}px`;
+                pip.style.top = `${initialY + dy}px`;
+                pip.style.right = 'auto'; // release right constraint
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                pip.style.transition = 'transform 0.2s ease-out';
+            });
+        });
+    </script>
+</body></html>
