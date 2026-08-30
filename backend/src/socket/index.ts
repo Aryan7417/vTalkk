@@ -48,7 +48,7 @@ export const initSocket = (server: HttpServer) => {
       );
 
       console.log(
-        `🏠 Joined room: user:${userId}`
+        `🏠 Joined room: users:${userId}`
       );
 
       // Tell other connected users
