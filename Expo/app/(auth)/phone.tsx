@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 
-const API_URL = "http://192.168.1.36:3000";
+const API_URL = "http://172.16.50.215:3000";
 // ip address with defaut
 
 export default function PhoneScreen() {

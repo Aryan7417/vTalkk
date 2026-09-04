@@ -408,7 +408,7 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
-const API_URL = "http://192.168.1.36:3000";
+const API_URL = "http://172.16.50.215:3000";
 
 export default function OTPVerificationScreen() {
   const { phone } = useLocalSearchParams<{ phone: string }>();
